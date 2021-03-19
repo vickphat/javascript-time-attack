@@ -30,11 +30,13 @@ h1 {
 
 .container {
     text-align: center;
+    margin: auto;
+    padding: auto;
 }
 
 #timeDisplay {
     text-align: center;
-    font-size: 60px;
+    font-size: 2rem;
     float: right;
     padding-right: 10px;
 }
@@ -45,4 +47,10 @@ h1 {
     font-size: 3rem;
     background-color: red;
     color: white;
+}
+
+.btn:hover {
+    background-color: white;
+    color: red;
+    
 }
