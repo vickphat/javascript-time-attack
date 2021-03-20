@@ -13,8 +13,8 @@ p {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 2rem;
-    padding: auto;
+    margin: 7rem;
+    padding: 8rem;
 }
 
 h1 {
@@ -26,6 +26,9 @@ h1 {
     flex-direction: row;
     background-color: red;
     color: white;
+    border: black;
+    border-style: solid;
+    border-width: 5px;
 }
 
 .container {
@@ -34,23 +37,40 @@ h1 {
     padding: auto;
 }
 
-#timeDisplay {
+#timer {
+    position: relative;
     text-align: center;
     font-size: 2rem;
     float: right;
     padding-right: 10px;
+    
 }
 
-.btn {
-    width: 50rem;
+#high-score {
+    position: relative;
+    float: left;
+    font-size: 2rem;
+    padding-left: 10px;
+    margin: auto;
+}
+
+.start-button {
+    width: 40rem;
     height: 10rem;
     font-size: 3rem;
     background-color: red;
     color: white;
+    border: black;
+    border-style: solid;
+    border-width: 5px;
 }
 
-.btn:hover {
+.start-button:hover {
     background-color: white;
     color: red;
     
+}
+
+.hide {
+    display: none;
 }
