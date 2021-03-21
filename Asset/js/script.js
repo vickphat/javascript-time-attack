@@ -15,37 +15,6 @@ var allScores = [];
 var storedScores = JSON.parse(localStorage.getItem("userData"));
 
 
-var questions = [
-    {
-        title: "Commonly used data type Do Not include:---",
-        choices: ["strings", "booleance", "alerts", "numbers"],
-        answer: "alerts"
-    },
-    {
-        title: "The condition in an if/else statement is enclosed within:---",
-        choices: ["quotes", "Curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
-    },
-    {
-        title: "Arrays in JavaScript can be used to store:---",
-        choices: ["numbers and strings", "others Arrays", "booleances", "all of the above"],
-        answer: "all of the above"
-    },
-    {
-        title: "String values must be enclosed within --- when being assigned to variables ",
-        choices: ["commas", "curly brackets", "quotes", "parentheses"],
-        answer: "quotes"
-    },
-    {
-        title: "A very useful tool used during development and debugging for printing content to the debugger is:---",
-        choices: ["JavaScript", "terminal/bash", "alerts", "console.log"],
-        answer: "console.log"
-    },
-]
-
-
-
-
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
@@ -55,5 +24,27 @@ function startQuiz() {
     }
     startScreen.setAttribute ("style", "display: none");
     startButton.setAttribute ("style", "display: none");
+
+    gameTimer()
 }
 
+function gameTimer() {
+    var secondsLeft = 10;
+
+    var timeInterval = setInterval(function () {
+        if (secondsLeft > 1) {
+            timer.textContent = secondsLeft;
+            secondsLeft--;
+        }
+        else if (secondsLeft === 1) {
+            timer.textContent = secondsLeft;
+            secondsLeft--;
+        }
+        else {
+            timer.textContent = '';
+
+            clearInterval(timeInterval);
+
+        }
+    }, 1000);
+}
