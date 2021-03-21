@@ -7,5 +7,5 @@ function printHighScores() {
         return b.score - a.score;
     });
 
-    highscores.
+    
 }
