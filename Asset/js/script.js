@@ -110,5 +110,25 @@ function startQuiz() {
     
 }
 
+// Quiz Timer
+function gameTimer() {
+    
 
+    var timeInterval = setInterval(function () {
+        if (secondsLeft > 1) {
+            timer.textContent = secondsLeft;
+            secondsLeft--;
+        }
+        else if (secondsLeft === 1) {
+            timer.textContent = secondsLeft;
+            secondsLeft--;
+        }
+        else {
+            timer.textContent = '0';
+
+            clearInterval(timeInterval);
+
+        }
+    }, 1000);
+}
 
