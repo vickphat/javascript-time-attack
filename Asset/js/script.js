@@ -6,7 +6,9 @@ var choices = document.querySelector("#choices");
 var startButton = document.querySelector("#start");
 var startScreen = document.querySelector("#start-screen");
 var endScreen = document.querySelector("#end-screen");
-var finalScore = document.querySelector("#final-score")
+var finalScore = document.querySelector("#final-score");
+var initials = document.querySelector("#initials");
+var submitButton = document.querySelector("#submit");
 // current index
 var questionIndex = 0;
 var score = 0;
@@ -16,14 +18,14 @@ var minus = 10;
 
 var quizQuestions = [
     {
-        title: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
+        title: "What does JavaScript stand for?",
+        choices: ["Java", "JavaScript", "Hyperlink", "Scripture"],
+        answer: "JavaScript"
     },
     {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
+        title: "When do JavaScripts execute?",
+        choices: ["Never", "At the end", "Immediately", "5 minutes"],
+        answer: "Immediately"
     },
     {
         title: "Arrays in Javascript can be used to store ____.",
@@ -31,9 +33,9 @@ var quizQuestions = [
         answer: "all of the above"
     },
     {
-        title: "String values must be enclosed within ____ when being assigned to variables.",
-        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
-        answer: "quotes"
+        title: "Is JavaScript case sensitive?",
+        choices: ["No", "Yes", "Maybe", "Sometimes"],
+        answer: "Yes"
     },
     {
         title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
@@ -54,7 +56,7 @@ function render(questionIndex) {
     var userChoices = quizQuestions[questionIndex].choices;
     questionsTitle.textContent = userQuestion;
 
-    userChoices.forEach(function(newItem) {
+    userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
         choices.appendChild(createUL);
@@ -90,30 +92,28 @@ function compare(event) {
         // All done will append last page with user stats
         endGame();
         clearInterval(timer);
-       
+
     } else {
         render(questionIndex);
     }
     questionsTitle.appendChild(createDiv);
 }
 
-
-
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
 
-    startScreen.setAttribute ("style", "display: none");
-    startButton.setAttribute ("style", "display: none");
+    startScreen.setAttribute("style", "display: none");
+    startButton.setAttribute("style", "display: none");
     render(questionIndex);
-    choices.setAttribute("style", "display: block" )
+    choices.setAttribute("style", "display: block")
     gameTimer()
-    
+
 }
 
 // Quiz Timer
 function gameTimer() {
-    
+
 
     var timeInterval = setInterval(function () {
         if (secondsLeft > 1) {
@@ -135,12 +135,42 @@ function gameTimer() {
 
 // End of quiz
 function endGame() {
-    
+
     questionsTitle.setAttribute("style", "display: none");
     timer.setAttribute("style", "display: none");
-    choices.setAttribute ("style", "display: none");
+    choices.setAttribute("style", "display: none");
     endScreen.classList.remove("hide");
     finalScore.append(secondsLeft * 10);
-    
+    return;
+
 }
 
+// Event listener to capture initials and local storage for initials and score
+submitButton.addEventListener("click", function () {
+    var ID = initials.value;
+
+    if (ID === null) {
+
+        console.log("No value entered!");
+
+    } 
+    else {
+
+        var endScore = {
+            initials: ID,
+            score: finalScore
+        }
+        console.log(endScore);
+        var allScores = localStorage.getItem("allScores");
+        if (allScores === null) {
+            allScores = [];
+        } else {
+            allScores = JSON.parse(allScores);
+        }
+        allScores.push(endScore);
+        var newScore = JSON.stringify(allScores);
+        localStorage.setItem("allScores", newScore);
+        // Travels to final page
+        window.location.replace("./highscore.html");
+    }
+});
