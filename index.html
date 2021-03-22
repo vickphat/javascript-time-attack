@@ -11,50 +11,44 @@
 
 <body>
     <h1>JavaScript Time Attack!!</h1>
-    <main class="container">
+
+    <div>
+        <h3 id="timer"> Time: <span id="time">0</span></h3>
+        <a id="score" href="#"> View Highscore</a>
+    </div>
+
+    
+
+    <div class="container">
+        <div class="start" id="start-screen">
+            <p> Try to answer the following JavaScript fundamentals questions within the time limit. For
+                every incorrect answer, the time will be reduced.
+                <br>
+                <br>
+                GOOD LUCK!!
+                <br>
+                <!-- Button to start quiz -->
+                <button class="start-button" id="start">Start Quiz</button>
+            </p>
+
+        </div>
+
+        <div class="container">
+            <h2 id="questions-title"></h2>
+            <ul class="hide" id="choices"></ul>
+        </div>
+
         <div>
-            <div>
-                <h3 id="timer"> Time: <span id="time">0</span></h3>
-            </div>
-
-            <div>
-                <a id="score" href="#"> View Highscore</a>
-            </div>
-
-            <div class="start" id="start-screen">
-                <p> Try to answer the following JavaScript fundamentals questions within the time limit. For
-                    every incorrect answer, the time will be reduced.
-                    <br>
-                    <br>
-                    GOOD LUCK!!
-                    <br>
-                    <!-- Button to start quiz -->
-                    <button class="start-button" id="start">Start Quiz</button>
+            <div class="hide" id="end-screen">
+                <h2>All done!</h2>
+                <p>Your final score is <span id="final-score"></span>.</p>
+                <p>
+                    Enter Initials: <input type="text" id="initials" max="3">
+                    <button id="submit">Submit</button>
                 </p>
-
             </div>
-
-            <div id="questions">
-                <h2 id="questions-title"></h2>
-                <div class="hide" id="choices">
-                    <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-                    <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-                    <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-                    <div class="choice" id="D" onclick="checkAnswer('D')"></div>
-                </div>
-            </div>
-
-            <div>
-                <div class="hide" id="end-screen">
-                    <h2>All done!</h2>
-                    <p>Your final score is <span id="final-score"></span>.</p>
-                    <p>
-                        Enter Initials: <input type="text" id="initials" max="3">
-                        <button id="submit">Submit</button>
-                    </p>
-                </div>
-            </div>
-    </main>
+        </div>
+    </div>
     <script src="./Asset/js/script.js"></script>
     <script src="./Asset/js/questions.js"></script>
 
