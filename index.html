@@ -22,7 +22,7 @@
     <div class="container">
         <div class="start" id="start-screen">
             <p> Try to answer the following JavaScript fundamentals questions within the time limit. For
-                every incorrect answer, the time will be reduced.
+                every incorrect answer, the time will be reduced by 10.
                 <br>
                 <br>
                 GOOD LUCK!!
@@ -33,15 +33,19 @@
 
         </div>
 
-        <div class="container">
+        <div>
             <h2 id="questions-title"></h2>
             <ul class="hide" id="choices"></ul>
         </div>
 
         <div>
             <div class="hide" id="end-screen">
-                <h2>All done!</h2>
-                <p>Your final score is <span id="final-score"></span>.</p>
+                <h4>GAME OVER!</h4>
+                <p>Your final score is</p>
+                <h2><span id="final-score"> </span> </h2>
+                
+                
+
                 <p>
                     Enter Initials: <input type="text" id="initials" max="3">
                     <button id="submit">Submit</button>

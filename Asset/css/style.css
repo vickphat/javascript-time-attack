@@ -1,5 +1,7 @@
 * {
     font-family: monospace;
+    text-align: center;
+    justify-content: center;
 
 }
 
@@ -114,6 +116,25 @@ h2 {
     font-size: 3rem;
     padding: auto;
     margin: auto;
+}
+
+h4 {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 65rem;
+    height: auto;
+    position: relative;
+    top: 45%;
+    left: 15%;
+    text-align: center;
+    justify-content: center;
+    font-size: 4rem;
+    background-color: red;
+    color: white;
+    border: black;
+    border-style: solid;
+    border-width: 5px;
+    margin: 6px; 
 }
 
 #createDiv {

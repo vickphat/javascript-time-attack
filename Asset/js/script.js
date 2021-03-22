@@ -10,7 +10,7 @@ var finalScore = document.querySelector("#final-score")
 // current index
 var questionIndex = 0;
 var score = 0;
-var secondsLeft = 75;
+var secondsLeft = 65;
 var minus = 10;
 
 
@@ -88,8 +88,9 @@ function compare(event) {
 
     if (questionIndex >= quizQuestions.length) {
         // All done will append last page with user stats
-        allDone();
-        createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + quizQuestions.length + " Correct!";
+        endGame();
+        clearInterval(timer);
+       
     } else {
         render(questionIndex);
     }
@@ -124,11 +125,22 @@ function gameTimer() {
             secondsLeft--;
         }
         else {
-            timer.textContent = '0';
-
-            clearInterval(timeInterval);
+            timer.textContent = '';
+            endGame()
+            clearInterval(timer);
 
         }
     }, 1000);
+}
+
+// End of quiz
+function endGame() {
+    
+    questionsTitle.setAttribute("style", "display: none");
+    timer.setAttribute("style", "display: none");
+    choices.setAttribute ("style", "display: none");
+    endScreen.classList.remove("hide");
+    finalScore.append(secondsLeft * 10);
+    
 }
 
