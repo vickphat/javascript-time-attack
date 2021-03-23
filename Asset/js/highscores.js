@@ -23,7 +23,7 @@ if (allScores) {
     for (var i = 0; i < allScores.length; i++) {
 
         var createEL = document.createElement("li");
-        createEL.textContent = allScores[i].initials + " " + allScores[i].score;
+        createEL.textContent = allScores[i].initials + " " + allScores[i].scores;
         highScore.appendChild(createEL);
 
     }

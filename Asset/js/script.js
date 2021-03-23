@@ -91,7 +91,7 @@ function compare(event) {
     if (questionIndex >= quizQuestions.length) {
         // All done will append last page with user stats
         endGame();
-        clearInterval(timer);
+        clearInterval();
 
     } else {
         render(questionIndex);
@@ -126,12 +126,14 @@ function gameTimer() {
         }
         else {
             timer.textContent = '';
+        clearInterval();
             endGame()
-            clearInterval(timer);
+            
 
         }
     }, 1000);
 }
+
 
 // End of quiz
 function endGame() {
@@ -140,7 +142,8 @@ function endGame() {
     timer.setAttribute("style", "display: none");
     choices.setAttribute("style", "display: none");
     endScreen.classList.remove("hide");
-    finalScore.append(secondsLeft * 10);
+    finalScore.append(secondsLeft);
+    clearInterval();
     return;
 
 }
@@ -149,16 +152,15 @@ function endGame() {
 submitButton.addEventListener("click", function () {
     var ID = initials.value;
 
-    if (ID === null) {
-
+    if (!ID) {
+        alert("Please Enter Your Initials");
         console.log("No value entered!");
-
     } 
     else {
 
         var endScore = {
             initials: ID,
-            score: finalScore
+            scores: secondsLeft
         }
         console.log(endScore);
         var allScores = localStorage.getItem("allScores");
