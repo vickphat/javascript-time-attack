@@ -9,13 +9,12 @@ var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
 var initials = document.querySelector("#initials");
 var submitButton = document.querySelector("#submit");
-// current index
 var questionIndex = 0;
 var score = 0;
 var secondsLeft = 65;
-var minus = 10;
+var timeInterval;
 
-
+// Array for questions, choices and answer
 var quizQuestions = [
     {
         title: "What does JavaScript stand for?",
@@ -28,19 +27,14 @@ var quizQuestions = [
         answer: "Immediately"
     },
     {
-        title: "Arrays in Javascript can be used to store ____.",
-        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        answer: "all of the above"
+        title: "What do arrays in Javascript store?",
+        choices: ["Numbers & Strings", "Other Arrays", "Booleans", "All Of The Above"],
+        answer: "All Of The Above"
     },
     {
         title: "Is JavaScript case sensitive?",
         choices: ["No", "Yes", "Maybe", "Sometimes"],
         answer: "Yes"
-    },
-    {
-        title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-        choices: ["Javascript", "terminal / bash", "for loops", "console log"],
-        answer: "console log"
     },
 
 ];
@@ -65,40 +59,41 @@ function render(questionIndex) {
     })
 }
 
-// Event to compare choices with answer
+// Checks to see if choice made is correct
 function compare(event) {
     var element = event.target;
+    var minus = 10;
 
     if (element.matches("li")) {
 
         var createDiv = document.createElement("div");
         createDiv.setAttribute("id", "createDiv");
-        // Correct condition 
+        // If the answer is correct
         if (element.textContent == quizQuestions[questionIndex].answer) {
             score++;
             createDiv.textContent = "Correct!";
-            // Correct condition 
-        } else {
-            // Will deduct -10 seconds off secondsLeft for wrong answers
+        // If answer is wrong, substracts 10 secs from remaining time  
+        } 
+        else {
+
             secondsLeft = secondsLeft - minus;
             createDiv.textContent = "Wrong!";
         }
 
     }
-    // Question Index determines number question user is on
+    
     questionIndex++;
 
     if (questionIndex >= quizQuestions.length) {
-        // All done will append last page with user stats
+        clearInterval(timeInterval);
         endGame();
-        clearInterval();
-
-    } else {
+    } 
+    else {
         render(questionIndex);
     }
     questionsTitle.appendChild(createDiv);
 }
-
+// Button to begin quiz
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
@@ -115,7 +110,7 @@ function startQuiz() {
 function gameTimer() {
 
 
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         if (secondsLeft > 1) {
             timer.textContent = secondsLeft;
             secondsLeft--;
@@ -126,10 +121,8 @@ function gameTimer() {
         }
         else {
             timer.textContent = '';
-        clearInterval();
+            clearInterval(timeInterval);
             endGame()
-            
-
         }
     }, 1000);
 }
@@ -142,25 +135,26 @@ function endGame() {
     timer.setAttribute("style", "display: none");
     choices.setAttribute("style", "display: none");
     endScreen.classList.remove("hide");
-    finalScore.append(secondsLeft);
-    clearInterval();
+    // Takes remaining time and multiplies it by 2.5 to get final score
+    finalScore.append(secondsLeft * 2.5);
+    clearInterval(timeInterval)
     return;
 
 }
 
-// Event listener to capture initials and local storage for initials and score
+// Saves initials and score to local storage 
 submitButton.addEventListener("click", function () {
     var ID = initials.value;
 
     if (!ID) {
         alert("Please Enter Your Initials");
-        console.log("No value entered!");
-    } 
+
+    }
     else {
 
         var endScore = {
             initials: ID,
-            scores: secondsLeft
+            scores: secondsLeft * 2.5
         }
         console.log(endScore);
         var allScores = localStorage.getItem("allScores");
@@ -172,7 +166,6 @@ submitButton.addEventListener("click", function () {
         allScores.push(endScore);
         var newScore = JSON.stringify(allScores);
         localStorage.setItem("allScores", newScore);
-        // Travels to final page
         window.location.replace("./highscore.html");
     }
 });
