@@ -1,3 +1,4 @@
+// Global Variable
 var timer = document.querySelector("#time");
 var highScore = document.querySelector("#score");
 var questions = document.querySelector("#questions");
@@ -39,7 +40,7 @@ var quizQuestions = [
 
 ];
 
-
+// Creates questions and answers on page
 var createUL = document.createElement("ul")
 
 function render(questionIndex) {
@@ -72,17 +73,15 @@ function compare(event) {
         if (element.textContent == quizQuestions[questionIndex].answer) {
             score++;
             divElement.textContent = "Correct!";
-        // If answer is wrong, substracts 10 secs from remaining time  
+          
         } 
         else {
-
+        // If answer is wrong, substracts 10 secs from remaining time
             secondsLeft = secondsLeft - minus;
             divElement.textContent = "Wrong!";
         }
-
-    }
-    
-    questionIndex++;
+        // Cycles through questions in array
+    } questionIndex++;
 
     if (questionIndex >= quizQuestions.length) {
         clearInterval(timeInterval);
@@ -148,10 +147,8 @@ submitButton.addEventListener("click", function () {
 
     if (!ID) {
         alert("Please Enter Your Initials");
-
     }
     else {
-
         var endScore = {
             initials: ID,
             scores: secondsLeft * 2.5

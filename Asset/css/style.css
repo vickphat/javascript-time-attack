@@ -136,6 +136,10 @@ li:hover {
     margin: auto;
 }
 
+#score:hover {
+    color: white;
+}
+
 #divElement {
     margin-top: 25px;
     border-top: 2px solid black;
