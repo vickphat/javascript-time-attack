@@ -34,50 +34,15 @@ h1 {
     border-width: 5px;
 }
 
-.container {
-    text-align: center;
-    margin: auto;
-    padding: auto;
-}
-
-#timer {
-    position: relative;
-    text-align: center;
-    font-size: 2rem;
-    float: right;
-    padding-right: 10px;
-    
-}
-
-#score {
-    position: relative;
-    float: left;
-    font-size: 2rem;
-    padding-left: 10px;
-    margin: auto;
-}
-
-.start-button {
-    width: 40rem;
-    height: 10rem;
-    font-size: 3rem;
-    background-color: red;
-    color: white;
-    border: black;
-    border-style: solid;
-    border-width: 5px;
-    margin: 20px;
+h2 {
+    max-width: 50rem;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-}
-
-.start-button:hover {
-    background-color: white;
-    color: red;
-    
-}
-
-.hide {
-    display: none;
+    text-align: center;
+    font-size: 3rem;
+    padding: auto;
+    margin: auto;
 }
 
 li {
@@ -103,27 +68,17 @@ li {
 li:hover {
     background-color: white;
     color: red;
-    cursor: pointer;
-     
+    cursor: pointer;    
 }
 
-h2 {
-    max-width: 50rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.container {
     text-align: center;
-    font-size: 3rem;
-    padding: auto;
     margin: auto;
+    padding: auto;
 }
 
-
-#createDiv {
-    margin-top: 25px;
-    border-top: 2px solid black;
-    color: ghostwhite;
-    opacity: 50%;
+.hide {
+    display: none;
 }
 
 .highScoreBtn {
@@ -144,4 +99,48 @@ h2 {
     color: gainsboro;
     background-color: black;
 }
+
+.start-button {
+    width: 40rem;
+    height: 10rem;
+    font-size: 3rem;
+    background-color: red;
+    color: white;
+    border: black;
+    border-style: solid;
+    border-width: 5px;
+    margin: 20px;
+    justify-content: center;
+}
+
+.start-button:hover {
+    background-color: white;
+    color: red;
+    
+}
+
+#timer {
+    position: relative;
+    text-align: center;
+    font-size: 2rem;
+    float: right;
+    padding-right: 10px;
+    
+}
+
+#score {
+    position: relative;
+    float: left;
+    font-size: 2rem;
+    padding-left: 10px;
+    margin: auto;
+}
+
+#divElement {
+    margin-top: 25px;
+    border-top: 2px solid black;
+    color: ghostwhite;
+    opacity: 50%;
+}
+
 

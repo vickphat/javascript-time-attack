@@ -66,18 +66,18 @@ function compare(event) {
 
     if (element.matches("li")) {
 
-        var createDiv = document.createElement("div");
-        createDiv.setAttribute("id", "createDiv");
+        var divElement = document.createElement("div");
+        divElement.setAttribute("id", "divElement");
         // If the answer is correct
         if (element.textContent == quizQuestions[questionIndex].answer) {
             score++;
-            createDiv.textContent = "Correct!";
+            divElement.textContent = "Correct!";
         // If answer is wrong, substracts 10 secs from remaining time  
         } 
         else {
 
             secondsLeft = secondsLeft - minus;
-            createDiv.textContent = "Wrong!";
+            divElement.textContent = "Wrong!";
         }
 
     }
@@ -91,7 +91,7 @@ function compare(event) {
     else {
         render(questionIndex);
     }
-    questionsTitle.appendChild(createDiv);
+    questionsTitle.appendChild(divElement);
 }
 // Button to begin quiz
 startButton.addEventListener("click", startQuiz);

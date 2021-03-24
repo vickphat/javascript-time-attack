@@ -1,20 +1,19 @@
-// Declared variables
 var highScore = document.querySelector("#highScore");
 var clearButton = document.querySelector("#clear");
 var backButton = document.querySelector("#back");
 
-// Event listener to clear scores 
+// Clear highscores
 clearButton.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 });
 
-// Event listener to move to index page
+// Goes back to quiz page
 backButton.addEventListener("click", function () {
     window.location.replace("./index.html");
 });
 
-// Retreives local stroage 
+// Pull data from local storage 
 var allScores = localStorage.getItem("allScores");
 allScores = JSON.parse(allScores);
 
