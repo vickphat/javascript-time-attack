@@ -37,8 +37,41 @@ var quizQuestions = [
         choices: ["No", "Yes", "Maybe", "Sometimes"],
         answer: "Yes"
     },
-
 ];
+
+// Button to begin quiz
+startButton.addEventListener("click", startQuiz);
+
+function startQuiz() {
+
+    startScreen.setAttribute("style", "display: none");
+    startButton.setAttribute("style", "display: none");
+    render(questionIndex);
+    choices.setAttribute("style", "display: block")
+    gameTimer()
+
+}
+
+// Quiz Timer
+function gameTimer() {
+
+
+    timeInterval = setInterval(function () {
+        if (secondsLeft > 1) {
+            timer.textContent = secondsLeft;
+            secondsLeft--;
+        }
+        else if (secondsLeft === 1) {
+            timer.textContent = secondsLeft;
+            secondsLeft--;
+        }
+        else {
+            timer.textContent = '';
+            clearInterval(timeInterval);
+            endGame()
+        }
+    }, 1000);
+}
 
 // Creates questions and answers on page
 var createUL = document.createElement("ul")
@@ -82,7 +115,7 @@ function compare(event) {
         }
         // Cycles through questions in array
     } questionIndex++;
-
+    // Runs endGame function if all questions are answered
     if (questionIndex >= quizQuestions.length) {
         clearInterval(timeInterval);
         endGame();
@@ -92,40 +125,6 @@ function compare(event) {
     }
     questionsTitle.appendChild(divElement);
 }
-// Button to begin quiz
-startButton.addEventListener("click", startQuiz);
-
-function startQuiz() {
-
-    startScreen.setAttribute("style", "display: none");
-    startButton.setAttribute("style", "display: none");
-    render(questionIndex);
-    choices.setAttribute("style", "display: block")
-    gameTimer()
-
-}
-
-// Quiz Timer
-function gameTimer() {
-
-
-    timeInterval = setInterval(function () {
-        if (secondsLeft > 1) {
-            timer.textContent = secondsLeft;
-            secondsLeft--;
-        }
-        else if (secondsLeft === 1) {
-            timer.textContent = secondsLeft;
-            secondsLeft--;
-        }
-        else {
-            timer.textContent = '';
-            clearInterval(timeInterval);
-            endGame()
-        }
-    }, 1000);
-}
-
 
 // End of quiz
 function endGame() {
