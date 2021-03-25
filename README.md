@@ -26,7 +26,7 @@ I created the html page to be plain and simple. I have the title of the code qui
 
 After you click the start button, the timer will change from 0 to 65 seconds and the first set of question and answers will appear on the screen. 
 
-<img src= "https://github.com/vickphat/javascript-time-attack/blob/master/Asset/images/js-quiz2.JPG" >
+<img src= "https://github.com/vickphat/javascript-time-attack/blob/master/Asset/images/js-quiz.2.JPG" >
 
 From here, the user has started the quiz and now needs to read the questions and click on the choice that they believe is correct. If the answer is correct, the word "correct!" will appear under the questions and above the choices to let the user know that their choice for the previous question was correct. If the answer is wrong, it will show "wrong!" instead of "correct!". Also, if the question was answered wrong, there will be a penalty. The penalty will be 10 seconds being deducted from your remaining time which will impact your final score at the end. 
 
